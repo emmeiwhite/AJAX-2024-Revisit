@@ -2,24 +2,17 @@ const topDiv = document.querySelector('.top')
 const middleDiv = document.querySelector('.middle')
 const bottomDiv = document.querySelector('.bottom')
 
-// This is the callback hell
-topDiv.addEventListener('click', () => {
+setTimeout(() => {
+  topDiv.style.backgroundColor = 'orange'
+
   setTimeout(() => {
-    top.style.backgroundColor = 'orange'
+    middleDiv.style.backgroundColor = 'blue'
 
-    middleDiv.addEventListener('click', () => {
-      setTimeout(() => {
-        top.style.backgroundColor = 'blue'
-
-        bottomDiv.addEventListener('click', () => {
-          setTimeout(() => {
-            top.style.backgroundColor = 'green'
-          }, 3000)
-        })
-      }, 3000)
-    })
-  }, 3000)
-})
+    setTimeout(() => {
+      bottomDiv.style.backgroundColor = 'green'
+    }, 1500)
+  }, 1500)
+}, 1500)
 
 /** --- Let's work a basic Promise example | Always think of Cab booking when thinking about Promises  --- */
 
