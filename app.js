@@ -38,3 +38,34 @@ promise
   .catch(err => {
     console.log(err)
   })
+
+//   Let's load image with JS
+
+const loader = document.querySelector('.loader')
+const image = document.querySelector('.img')
+const error = document.querySelector('.error')
+
+// Function that returns a promise for loading an image
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    image.onload = () => resolve()
+    image.onerror = () => reject()
+    image.src = src
+
+    //   Check if the image is already cached
+    if (image.complete) {
+      image.onload()
+    }
+  })
+}
+
+// use the promise to handle the image loading
+loadImage(image.src)
+  .then(() => {
+    loader.style.display = 'none'
+    image.style.display = 'block'
+  })
+  .catch(() => {
+    loader.style.display = 'none'
+    error.style.display = 'block'
+  })
