@@ -37,6 +37,15 @@ const btn = document.querySelector('button')
 btn.addEventListener('click', () => {
   fetch(url)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(typeof data)
+
+      const htmlParas = data
+        .map(person => {
+          return `<p>${person.name}</p>`
+        })
+        .join('')
+      document.body.insertAdjacentHTML('beforeend', htmlParas)
+    })
     .catch(err => console.log(err))
 })
