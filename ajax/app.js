@@ -1,46 +1,21 @@
-const btn = document.querySelector('button')
+// fetch : Based on Promises and more cleaner
+
 const url = './api/people.json'
-btn.addEventListener('click', () => {
-  getData(url)
-})
 
-const getData = url => {
-  const xhr = new XMLHttpRequest()
+/* ---
+fetch(url)
+  .then(response => {
+    // response object: It doesn't directly get us the data but some useful data
+    // useful properties and methods : We require json() method
+    // convert response to  JSON data with json() method
+    // It returns a promise as well, so we'll require another .then() to handle the Promise
 
-  xhr.open('GET', url)
-
-  xhr.onreadystatechange = function () {
-    console.log('ReadyState:', xhr.readyState)
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      // Check if the request is complete
-      console.log('Status:', xhr.status) // Log the status
-      if (xhr.status >= 200 && xhr.status < 300) {
-        // Check if the request was successful
-        /*
-        const para = document.createElement('p')
-        para.textContent = xhr.responseText
-
-        document.body.appendChild(para)
-        console.log('Response:', xhr.responseText) // Log the response text
-        */
-
-        const data = JSON.parse(xhr.responseText)
-        console.log(data)
-
-        const displayParas = data
-          .map(person => {
-            return `<p>${person.name}</p>`
-          })
-          .join('')
-
-        document.body.insertAdjacentHTML('beforeend', displayParas)
-      } else {
-        console.error('Request failed with status:', xhr.status) // Handle error
-      }
-    }
-  }
-  xhr.send()
-}
-
-// This line of code runs at the start because the XHR code runs asynchronously in the background
-console.log('Hello World!')
+    return response.json()
+  })
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+  ---*/
