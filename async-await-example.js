@@ -1,6 +1,6 @@
 const topDiv = document.querySelector('.top')
 const centerDiv = document.querySelector('.center')
-const bottomDiv = document.querySelector('.bottom1')
+const bottomDiv = document.querySelector('.bottom')
 
 const btn = document.querySelector('.btn')
 
@@ -25,9 +25,18 @@ function setBgColor(element, color) {
         element.style.backgroundColor = color
 
         resolve()
-      }, 2000)
+      }, 1000)
     } else {
       reject(new Error(`There is no such element ${element}`))
     }
   })
 }
+
+// IMP: An async function always returns a Promise
+
+async function getColor() {
+  return 'red'
+}
+
+const result = getColor()
+console.log(result.then(data => console.log(data)))
