@@ -1,6 +1,6 @@
-const topDiv = document.querySelector('.top1')
+const topDiv = document.querySelector('.top')
 const centerDiv = document.querySelector('.center')
-const bottomDiv = document.querySelector('.bottom')
+const bottomDiv = document.querySelector('.bottom1')
 
 const btn = document.querySelector('.btn')
 
@@ -14,7 +14,7 @@ btn.addEventListener('click', async () => {
     console.log(first)
     // The above line runs at the last, await makes sure promise is settled - either rejected or resolved and only then moves to the next line
   } catch (error) {
-    console.log(`Promise is rejected`)
+    console.log(error)
   }
 })
 
