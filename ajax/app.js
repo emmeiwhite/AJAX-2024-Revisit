@@ -20,7 +20,23 @@ fetch(url)
   })
   ---*/
 
+/* ---
 fetch(url)
   .then(response => response.json())
   .then(data => console.log(data))
-  .catch(error => console.log(error))
+    .catch(error => console.log(error))
+    --- */
+
+/** Let's work on our button example:
+ * we'll click on the button and fetch the external data (in our case json data)
+ * in our api folder
+ */
+
+const btn = document.querySelector('button')
+
+btn.addEventListener('click', () => {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+})
