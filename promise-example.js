@@ -10,11 +10,12 @@ btn.addEventListener('click', () => {
   loader.style.display = 'block'
   const promise = loadImage(url)
   promise
-    .then(data => {
+    .then(img => {
       loader.style.display = 'none'
       error.style.display = 'none'
-      console.log(data)
-      container.innerHTML = data
+      console.log(img)
+      container.innerHTML = '' // Clear previous images
+      container.appendChild(img)
     })
     .catch(errorText => {
       loader.style.display = 'none'
