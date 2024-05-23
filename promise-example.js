@@ -2,7 +2,7 @@
 const btn = document.querySelector('.btn')
 const container = document.querySelector('.img-container')
 
-const url = 'https://source.unsplash.com/random'
+const url = 'https://source.unsplash.com'
 
 btn.addEventListener('click', () => {
   const promise = loadImage(url)
@@ -10,5 +10,17 @@ btn.addEventListener('click', () => {
 })
 
 function loadImage(urlImage) {
-  return new Promise((resolve, reject) => {})
+  return new Promise((resolve, reject) => {
+    let img = new Image()
+
+    img.addEventListener('load', () => {
+      console.log('Hey everything worked!')
+    })
+
+    img.addEventListener('error', () => {
+      console.log('There was an error!')
+    })
+
+    img.src = urlImage // here we are setting src for the image
+  })
 }
