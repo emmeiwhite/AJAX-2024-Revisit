@@ -26,6 +26,14 @@ const getData = url => {
 
         const data = JSON.parse(xhr.responseText)
         console.log(data)
+
+        const displayParas = data
+          .map(person => {
+            return `<p>${person.name}</p>`
+          })
+          .join('')
+
+        document.body.insertAdjacentHTML('beforeend', displayParas)
       } else {
         console.error('Request failed with status:', xhr.status) // Handle error
       }
