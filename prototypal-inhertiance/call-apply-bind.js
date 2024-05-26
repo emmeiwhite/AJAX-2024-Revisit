@@ -26,4 +26,24 @@ const obj = {
 obj.sing()
 /* --- what is to the left of the dot operator? obj. so this within the function points to the obj --- */
 
-// B) call, apply, bind
+/** BENEFITS OF this:
+ * 1) gives methods access to their object
+ * 2) execute same code for multiple objects
+ */
+
+function importantPerson() {
+  console.log(this)
+  console.log(this.name)
+}
+
+// let's try to reuse the importantPerson function in two objects
+
+const john = {
+  name: 'john',
+  getDetails: importantPerson
+}
+
+const bucky = {
+  name: 'bucky',
+  getDetails: importantPerson
+}
