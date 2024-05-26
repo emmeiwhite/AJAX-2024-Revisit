@@ -142,3 +142,55 @@ const bookOfLife = {
 }
 
 console.log(bookDetails.call(bookOfLife))
+
+// apply and bind examples
+
+// apply also works like call, the only difference is that second argument is an array
+
+const phone = {
+  name: 'one plus',
+  price: 23000,
+
+  increasePrice(price) {
+    return (this.price = price)
+  }
+}
+
+const iphone = {
+  name: 'iPhone14',
+  price: 0
+}
+
+phone.increasePrice.call(iphone, 88000)
+
+// The function is not actually added to the iphone, it simple calls it and assigns the context of this
+// console.log(iphone)
+
+// bind()
+// assign, call later
+
+function celebrate() {
+  return `We are celebrating the auspicious ${this.occasion} & ${this.food}`
+}
+
+// Muslim festival
+const eid = {
+  occasion: 'Eid',
+  food: 'veg & halal non-veg'
+}
+
+// Hindus festival
+const holy = {
+  occasion: 'Holy',
+  food: 'veg only and fresh fruits'
+}
+
+// Hindus festival
+const sikhs = {
+  occasion: 'Vaisakhi (Baisakhi)',
+  food: 'lassi, poori, langar'
+}
+
+const muslimsCelebrate = celebrate.bind(eid)
+const hindusCelebrate = celebrate.bind(holy)
+const sikhsCelebrate = celebrate.bind(sikhs)
