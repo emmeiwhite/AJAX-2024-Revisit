@@ -22,3 +22,7 @@ emmei.deposit(34)
 rawa.deposit(23)
 
 // one prototype to be used by all the instances, which is really fantastic in JS, we are not creating unnecessary copies in each constructor for the deposit function
+
+/** Property Lookup: The property or method is first looked in the object and if it is not in the object, we move to the Prototype to check the property or method and if not, we further move up in the prototype chain until we reach Object and its prototype */
+console.log({})
+console.log([])
