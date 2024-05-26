@@ -47,3 +47,98 @@ const bucky = {
   name: 'bucky',
   getDetails: importantPerson
 }
+
+var name = 'Sunny'
+importantPerson() // this keyword inside the function will point to the name variable in that case, because name is on window
+
+// Lexical Scope doesn't work in the case of this keyword
+// this is dynamically scoped and depends on who calls it
+
+/** --- Let's see an Example --- */
+
+const imran = {
+  name: 'Imran Rafiq Rather',
+  getDetails() {
+    console.log(this.name)
+
+    const func2 = function () {
+      console.log('b', this) // here this point again to the window
+    }
+    func2() // to the left of func2() is nothing which means window, we can use arrow function to resolve this
+  }
+}
+
+imran.getDetails()
+
+const rawdha = {
+  name: 'Rawdha Bejaoui',
+  getDetails() {
+    console.log(this.name)
+
+    const func2 = () => {
+      console.log('b', this) // here this point again to the window
+    }
+
+    func2() // to the left of func2() is nothing which means window, we can use arrow function to resolve this
+
+    function func3() {
+      console.log('c', this)
+    }
+    //   Before arrow functions we used bind() but it has to be returned because bind() is not invoked immediately
+    return func3.bind(this)
+  }
+}
+
+imran.getDetails()
+
+rawdha.getDetails()
+rawdha.getDetails()
+
+// let's learn call: We'll set a new scope to this keyword used in a normal function
+
+function greet() {
+  return `Greetings 🚀 ${this.friend}`
+}
+
+const greetRauf = greet.call({ friend: 'Rauf', age: 33 })
+
+const rawa = {
+  friend: 'Rawdha',
+  age: 25
+}
+const greetRawa = greet.call(rawa)
+
+// Now, we can even use a method inside an object to be used by other objects, which is call method borrowing
+
+const wizard = {
+  name: 'Gandalf',
+  health: 70,
+
+  getHealing() {
+    return (this.health = 100)
+  }
+}
+
+// Now archer doesn't  have a healing power
+const archer = {
+  name: 'Robin Hood',
+  health: 30
+}
+
+wizard.getHealing.call(archer)
+
+// Let me do few more examples of call()
+
+function bookDetails() {
+  let bookName = this.bookName
+  let bookPrice = this.price
+
+  return `Book Name: ${bookName} & Book Price: ${bookPrice}`
+}
+
+const bookOfLife = {
+  bookName: 'The Reality of Life',
+  price: 345
+}
+
+console.log(bookDetails.call(bookOfLife))
