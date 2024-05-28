@@ -1,15 +1,6 @@
-import { people } from './data.js'
-console.log(people)
-
 const container = document.querySelector('.container')
 const button = document.querySelector('button')
-
-const renderPeople = people
-  .map(person => {
-    const { name, profession } = person
-    return `<p><strong>Name:</strong> ${name}, <strong>Profession:</strong> <em>${profession}</em></p>`
-  })
-  .join('')
+import renderPeople from './showPeople.js'
 
 button.addEventListener('click', () => {
   container.innerHTML = renderPeople
