@@ -1,6 +1,4 @@
-import { people } from './data.js'
-
-export default function showPeople() {
+export default function showPeople(people) {
   const renderPeople = people
     .map(person => {
       const { name, profession } = person
