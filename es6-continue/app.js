@@ -54,8 +54,33 @@ const table = {
   height: 3,
   width: 2
 }
+
+// Not advised to use for in loop for Arrays
 for (let parameter in table) {
   //   console.log(parameter)
   // we can iterate over properties in an object
   console.log(`${parameter}: ${table[parameter]}`)
 }
+
+/** There method to convert an object into array */
+
+// 1. Object.keys()    : converts property names into array
+// 2. Object.value()   : converts property values into array
+// 3. Object.entities(): converts both
+
+console.log(Object.keys(table))
+console.log(Object.values(table))
+console.log(Object.entries(table))
+
+// we can use map to obtain entries in different format in Object.entries(table)
+const book = {
+  author: 'rawdha bejaoui',
+  pages: 201,
+  price: 345
+}
+
+const bookDetails = Object.entries(book)
+bookDetails.map(bookDetailArray => {
+  const [key, property] = bookDetailArray
+  console.log(key, property)
+})
